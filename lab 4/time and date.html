@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display Date and Time</title>
+</head>
+<body>
+  <h1>Date and Time Display</h1>
+  <p id="datetime"></p>
+
+  <script>
+    // Function to update the date and time display
+    function updateDateTime() {
+      const datetimeElement = document.getElementById('datetime');
+      const currentDate = new Date();
+
+      // Get date and time components
+      const date = currentDate.toLocaleDateString(); // Format: MM/DD/YYYY
+      const time = currentDate.toLocaleTimeString(); // Format: HH:MM:SS AM/PM
+
+      // Display date and time
+      datetimeElement.innerHTML = `Date: ${date}<br>Time: ${time}`;
+    }
+
+    // Call the updateDateTime function to display date and time on page load
+    updateDateTime();
+
+    // Update date and time every second
+    setInterval(updateDateTime, 1000);
+  </script>
+    <style>
+      table, th, td, tr {
+          border: 1px solid black;
+      }
+  </style>
+  <table id="table">
+      <tr>
+          <th>heading1</th>
+          <th>heading2</th>
+      </tr>
+
+      <tr>
+          <td>row1cell1</td>
+          <td>row1cell2</td>
+      </tr>
+
+      <tr>
+          <td>row2cell1</td>
+          <td>row2cell2</td>
+      </tr>
+  </table>
+
+  <button id="insert">Insert Row</button>
+
+
+  <script>
+      const table = document.getElementById('table');
+      document.getElementById('insert').addEventListener('click', () => {
+          table.innerHTML += `<tr>
+          <td>new data1</td>
+          <td>new data2</td>
+      </tr>`;
+      });
+
+
+      
+
+  </script>
+  <p>Drop Down List</p>
+
+  <select id="droplist">
+      <option value="">Select</option>
+      <option value="">option 1</option>
+      <option value="">option 2</option>
+      <option value="">option 3</option>
+      <option value="">option 4</option>
+</select>
+
+<button id="btn">Clear option</button>
+
+<script>
+
+  const list = document.getElementById('droplist');
+  const options = list.children;
+  let cnt = options.length - 1;
+  
+  document.getElementById('btn').addEventListener('click', ()=> {
+      list.removeChild(options[cnt]);
+      cnt -= 1; 
+  });
+
+</script>
+<p>Table Border Change</p>
+    <table id="table">
+        <tr id="row-h">
+            <th id="dt">heading1</th>
+            <th id="dt">heading2</th>
+        </tr>
+
+        <tr id="row-d1">
+            <td id="dt">row1cell1</td>
+            <td id="dt">row1cell2</td>
+        </tr>
+
+        <tr id="row-d2">
+            <td id="dt">row2cell1</td>
+            <td id="dt">row2cell2</td>
+        </tr>
+    </table><br>
+
+    <button id="btn">Change Table Border</button>
+
+    
+
+    <script>
+
+        const table = document.getElementById('table');
+        const rowp = document.getElementById('row-h');
+        const row1 = document.getElementById('row-d1');
+        const row2 = document.getElementById('row-d2');
+        
+
+        const dec = ['2px solid black','3px solid red','4px solid blue','5px solid orange'];
+        let cnt = dec.length - 1;
+        document.getElementById('btn').addEventListener('click', () => {
+            const table = document.getElementById('table');
+            table.style.border = dec[cnt];
+            
+            Array.from(rowp.children).forEach(ele => {
+                ele.style.border = dec[cnt];
+            });
+            Array.from(row1.children).forEach(ele => {
+                ele.style.border = dec[cnt];
+            });
+            Array.from(row2.children).forEach(ele => {
+                ele.style.border = dec[cnt];
+            });
+            cnt--;
+        });
+        
+        
+    </script>
+</body>
+</html>
